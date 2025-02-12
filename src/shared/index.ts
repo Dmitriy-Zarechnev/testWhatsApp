@@ -4,6 +4,7 @@ export {Typography} from './components/typography/Typography'
 export {Input} from './components/input/Input'
 export {TextArea} from './components/textArea/TextArea'
 export {GreenText} from './components/greenText/GreenText'
+export {ImgComponent} from './components/imgComponent/ImgComponent'
 
 export type {InputProps} from './components/input/Input'
 export type {TextAreaProps} from './components/textArea/TextArea'
