@@ -12,6 +12,8 @@ export type {TextAreaProps} from './components/textArea/TextArea'
 export {Router} from './routes/Router'
 
 export * from './constants/pathConstants'
+export * from './constants/fieldHeightConstants'
+
 export * from './types/zodValidation'
 
 export {Layout} from './layout/Layout'
