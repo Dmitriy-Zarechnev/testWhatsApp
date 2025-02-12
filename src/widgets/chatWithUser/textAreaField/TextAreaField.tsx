@@ -7,13 +7,10 @@ import {useResizeTextArea} from './lib/useResizeTextArea'
 
 import s from './TextAreaField.module.scss'
 
-type Props = {
-    onHeightChange: (height: number) => void
-}
 
-export const TextAreaField = ({onHeightChange}: Props) => {
+export const TextAreaField = () => {
     const [messageField, setMessageField] = useState('')
-    const {adjustHeight, textAreaRef} = useResizeTextArea(messageField, onHeightChange)
+    const {adjustHeight, textAreaRef} = useResizeTextArea(messageField)
 
 
     const changeMessageHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -40,28 +37,30 @@ export const TextAreaField = ({onHeightChange}: Props) => {
     }
 
     return (
-        <div className={s.wrapper}>
-            <TextArea
-                className={s.textArea}
-                onChange={changeMessageHandler}
-                onInput={adjustHeight}
-                onKeyDown={onKeyPressHandler}
-                placeholder={'Введите сообщение'}
-                ref={textAreaRef}
-                value={messageField}
-                wrapperCN={s.textAreaWrapper}
-            />
-            {messageField && (
-                <Button className={s.sendButton} onClick={sendMessageHandler} variant={'outlined'}>
-                    Отправить
-                </Button>
-            )}
-            {messageField && (
-                <Button className={s.clearMessageButton} onClick={clearMessageHandler} variant={'icon'}>
-                    x
-                </Button>
-            )}
-        </div>
+        <>{/*{getPublicUserProfileIsLoading && <LineLoader />}*/}
+            <div className={s.wrapper}>
+                <TextArea
+                    className={s.textArea}
+                    onChange={changeMessageHandler}
+                    onInput={adjustHeight}
+                    onKeyDown={onKeyPressHandler}
+                    placeholder={'Введите сообщение'}
+                    ref={textAreaRef}
+                    value={messageField}
+                    wrapperCN={s.textAreaWrapper}
+                />
+                {messageField && (
+                    <Button className={s.sendButton} onClick={sendMessageHandler} variant={'outlined'}>
+                        Отправить
+                    </Button>
+                )}
+                {messageField && (
+                    <Button className={s.clearMessageButton} onClick={clearMessageHandler} variant={'icon'}>
+                        x
+                    </Button>
+                )}
+            </div>
+        </>
     )
 }
 

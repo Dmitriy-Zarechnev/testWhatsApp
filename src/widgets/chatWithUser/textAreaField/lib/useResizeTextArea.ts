@@ -3,8 +3,7 @@ import {INITIAL_TEXT_FIELD_HEIGHT, MAX_TEXT_FIELD_HEIGHT} from '@/shared'
 
 
 export const useResizeTextArea = (
-    messageField: string,
-    onHeightChange: (height: number) => void
+    messageField: string
 ) => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
@@ -16,7 +15,6 @@ export const useResizeTextArea = (
             const newHeight = Math.min(textarea.scrollHeight, MAX_TEXT_FIELD_HEIGHT)
 
             textarea.style.height = `${newHeight}px`
-            onHeightChange(newHeight)
         }
     }
 
@@ -26,7 +24,6 @@ export const useResizeTextArea = (
 
         return () => window.removeEventListener('resize', adjustHeight)
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [messageField])
 
     return {adjustHeight, textAreaRef}

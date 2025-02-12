@@ -1,6 +1,10 @@
+import s from './ChatField.module.scss'
+
+
 export const ChatField = () => {
+
     return (
-        <div>
+        <div className={s.wrapper}>
 
         </div>
     )
