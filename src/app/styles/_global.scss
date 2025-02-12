@@ -1,0 +1,113 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 360px;
+  padding-top: var(--header-height) !important;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 16px;
+  color: var(--DARK-900);
+
+  background-color: var(--LIGHT-100);
+  border: 0;
+}
+
+input,
+button,
+select,
+textarea,
+optgroup,
+option {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background-color: unset;
+  border: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px var(--LIGHT-100) inset !important;
+
+  -webkit-text-fill-color: var(--DARK-900) !important;
+}
+
+img {
+  vertical-align: top;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+*::selection {
+  color: var(--LIGHT-100);
+  background-color: var(--ACCENT-900);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track:horizontal {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb:horizontal {
+  background-color: var(--ACCENT-900);
+  border: 3px solid var(--ACCENT-900);
+  border-radius: 5px;
+
+  &:hover {
+    cursor: grab;
+    background-color: var(--ACCENT-500);
+    border: 3px solid var(--ACCENT-500);
+  }
+}
