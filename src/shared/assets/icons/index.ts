@@ -1,0 +1,1 @@
+export {AddNewChatIcon} from './addNewChatIcon'

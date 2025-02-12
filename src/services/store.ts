@@ -4,12 +4,14 @@ import {setupListeners} from '@reduxjs/toolkit/query'
 import {bestTestApi} from './api/bestTestApi'
 import {instanceInfoReducer} from './slices/instanceSlice'
 import {useDispatch} from 'react-redux'
+import {phoneNumberReducer} from '@/services/slices/phoneNumberSlice'
 
 export const store = configureStore({
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(bestTestApi.middleware),
     reducer: {
         [bestTestApi.reducerPath]: bestTestApi.reducer,
-        instanceInfo: instanceInfoReducer
+        instanceInfo: instanceInfoReducer,
+        phoneNumber: phoneNumberReducer
     }
 })
 

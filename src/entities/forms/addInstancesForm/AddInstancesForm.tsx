@@ -1,8 +1,6 @@
 import {AddInstancesFormValues, AddInstancesSchema, Button} from '@/shared'
 import {ControlledInput} from '@/entities'
 import {useForm} from 'react-hook-form'
-import {useSelector} from 'react-redux'
-import {selectApiTokenInstance, selectIdInstance} from '@/services'
 import {zodResolver} from '@hookform/resolvers/zod'
 
 import s from './AddInstancesForm.module.scss'
@@ -12,8 +10,6 @@ type Props = {
 }
 
 export const AddInstancesForm = ({onSubmitAddInstancesForm}: Props) => {
-    const idInstance = useSelector(selectIdInstance)
-    const apiTokenInstance = useSelector(selectApiTokenInstance)
 
     const {
         control,
@@ -22,8 +18,8 @@ export const AddInstancesForm = ({onSubmitAddInstancesForm}: Props) => {
         reset
     } = useForm<AddInstancesFormValues>({
         defaultValues: {
-            idInstance,
-            apiTokenInstance
+            idInstance: '',
+            apiTokenInstance: ''
         },
         mode: 'onChange',
         resolver: zodResolver(AddInstancesSchema)

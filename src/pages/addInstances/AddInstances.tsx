@@ -1,6 +1,6 @@
 import {AddInstancesForm} from '@/entities'
 import {useNavigate} from 'react-router-dom'
-import {AddInstancesFormValues, PATH, Typography} from '@/shared'
+import {AddInstancesFormValues, GreenText, PATH, Typography} from '@/shared'
 import {toast} from 'react-toastify'
 import {useAppDispatch} from '@/services/store'
 import {setInstanceInfo} from '@/services'
@@ -26,9 +26,7 @@ export const AddInstances = () => {
         <>
             <Typography variant={'h2'} className={s.text}>
                 Вводите свои учетные данные из системы{' '}
-                <Typography as={'span'} variant={'h2'} className={s.greenText}>
-                    GREEN-API
-                </Typography>
+                <GreenText text={'GREEN-API'}/>
             </Typography>
             <AddInstancesForm onSubmitAddInstancesForm={submitAddInstancesFormHandler}/>
         </>

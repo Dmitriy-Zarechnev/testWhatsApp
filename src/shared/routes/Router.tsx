@@ -4,7 +4,7 @@ import {
     createBrowserRouter, Outlet, Navigate
 } from 'react-router-dom'
 
-import {Error404, Messenger, AddInstances} from '@/pages'
+import {Error404, Messenger, AddInstances, MessengerWithUser} from '@/pages'
 import {PATH} from '../constants/pathConstants'
 import {Layout} from '../layout/Layout'
 
@@ -16,6 +16,10 @@ const routes: RouteObject[] = [
     {
         element: <AddInstances/>,
         path: PATH.ADD_INSTANCES
+    },
+    {
+        element: <MessengerWithUser/>,
+        path: PATH.MESSENGER_WITH_USER
     }
 ]
 

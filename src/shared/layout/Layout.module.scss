@@ -2,6 +2,23 @@
   width: 100%;
   max-width: var(--screen-max-width);
   margin: 0 auto;
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 
+.iconButton {
+  align-self: flex-start;
+}
+
+.addChatIcon {
+  width: 40px;
+  height: 40px;
+  color: var(--ACCENT-700);
+
+  &:hover {
+    color: var(--ACCENT-300);
+  }
+}

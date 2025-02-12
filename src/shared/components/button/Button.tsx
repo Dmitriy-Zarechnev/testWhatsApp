@@ -6,6 +6,7 @@ import s from './Button.module.scss'
 
 export type ButtonVariants =
     | 'outlined'
+    | 'icon'
     | 'primary'
     | 'secondary'
 
