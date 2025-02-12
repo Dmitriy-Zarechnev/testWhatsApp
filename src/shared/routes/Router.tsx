@@ -1,23 +1,36 @@
 import {
     RouteObject,
     RouterProvider,
-    createBrowserRouter
+    createBrowserRouter, Outlet, Navigate
 } from 'react-router-dom'
 
-import {Error404, Notifications} from '@/pages'
+import {Error404, Messenger, AddInstances} from '@/pages'
 import {PATH} from '../constants/pathConstants'
 import {Layout} from '../layout/Layout'
 
 const routes: RouteObject[] = [
     {
-        element: <Notifications/>,
-        path: PATH.BASE
+        element: <Messenger/>,
+        path: PATH.MESSENGER
+    },
+    {
+        element: <AddInstances/>,
+        path: PATH.ADD_INSTANCES
     }
 ]
 
 const router = createBrowserRouter([
     {
-        children: routes,
+        children: [
+            {
+                children: routes,
+                element: <Outlet/>
+            },
+            {
+                element: <Navigate replace to={PATH.ADD_INSTANCES}/>,
+                path: '/'
+            }
+        ],
         element: <Layout/>,
         errorElement: <Error404/>
     }

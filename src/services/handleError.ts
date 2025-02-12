@@ -13,8 +13,6 @@ export const handleError = (
 ) => {
     if (result.error) {
         switch (result.error.status) {
-            case 'FETCH_ERROR':
-            case 'PARSING_ERROR':
             case 'CUSTOM_ERROR':
                 toast.error(result.error.error)
                 return api
@@ -32,7 +30,6 @@ export const handleError = (
                 toast.error(JSON.stringify(result.error))
                 break
         }
-
     }
 }
 

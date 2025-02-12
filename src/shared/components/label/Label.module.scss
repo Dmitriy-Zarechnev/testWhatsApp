@@ -1,0 +1,12 @@
+.label.label {
+  cursor: pointer;
+  color: var(--LIGHT-100);
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  color: var(--DANGER-500);
+}

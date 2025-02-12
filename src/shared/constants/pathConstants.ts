@@ -1,4 +1,4 @@
 export const PATH = {
-    ADD_INSTANCE: '/add-instance',
-    BASE: '/'
+    ADD_INSTANCES: '/add-instances',
+    MESSENGER: '/messenger'
 } as const

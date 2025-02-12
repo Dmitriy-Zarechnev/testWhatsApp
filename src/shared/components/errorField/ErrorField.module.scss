@@ -1,0 +1,8 @@
+.errorText.errorText {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+
+  color: var(--DANGER-500);
+}

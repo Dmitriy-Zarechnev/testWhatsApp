@@ -5,7 +5,7 @@ import {handleError} from '../handleError'
 export const bestTestApi = createApi({
     baseQuery: async (args, api, extraOptions) => {
         const result = await fetchBaseQuery({
-            baseUrl: import.meta.env.VITE_BEST_API_URL
+            baseUrl: import.meta.env.VITE_BEST_TEST_API_URL
         })(args, api, extraOptions)
 
         handleError(api, result)
