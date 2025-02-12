@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: fit-content;
+}
+
+.greyWrapper {
+  background-color: var(--DARK-300);
+}
+
+.blueWrapper {
+  margin: 0 12px 0 auto;
+  background-color: var(--ACCENT-900);
+}
+
+.date {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.greyDate {
+  color: var(--LIGHT-900);
+}
+
+.blueDate {
+  color: var(--ACCENT-300);
+}

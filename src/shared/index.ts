@@ -13,6 +13,7 @@ export {Router} from './routes/Router'
 
 export * from './constants/pathConstants'
 export * from './constants/fieldHeightConstants'
+export * from './assets/icons'
 
 export * from './types/zodValidation'
 

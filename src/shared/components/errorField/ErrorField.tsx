@@ -1,5 +1,5 @@
-import s from './ErrorField.module.scss'
 import {Typography} from '@/shared'
+import s from './ErrorField.module.scss'
 
 type Props = {
     error?: string

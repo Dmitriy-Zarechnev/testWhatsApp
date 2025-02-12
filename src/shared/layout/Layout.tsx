@@ -8,7 +8,7 @@ import s from './Layout.module.scss'
 export const Layout = () => {
     return (
         <main className={s.main}>
-            <Button variant={'icon'} as={Link} to={PATH.MESSENGER} className={s.iconButton} title={'На главную'}>
+            <Button variant={'icon'} as={Link} to={PATH.ADD_INSTANCES} className={s.iconButton} title={'На главную'}>
                 <AddNewChatIcon className={s.addChatIcon}/>
             </Button>
             <Outlet/>

@@ -3,6 +3,13 @@ export type InstanceInfo = {
     apiTokenInstance: string
 }
 
-export type PhoneNumber = {
-    phoneNumber: string
+export  type Message = {
+    message: string
+}
+
+export type MessagesState = {
+    sendMessage: Array<Message & {
+        isMine: boolean
+    }>
+    responseMessage: Array<Message>
 }

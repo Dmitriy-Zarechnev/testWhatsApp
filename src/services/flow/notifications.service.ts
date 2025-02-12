@@ -1,17 +1,25 @@
 import {bestTestApi} from '../api/bestTestApi'
-import {GetNotificationsArgs} from '@/services'
+import {GetMessagesArgs, MessageResponse, SendMessageArgs} from '@/services'
 
 const notificationsService = bestTestApi.injectEndpoints({
     endpoints: builder => {
         return {
-            getNotifications: builder.query<void, GetNotificationsArgs>({
-                query: ({idInstance, apiTokenInstance}) => ({
+            getMessages: builder.query<MessageResponse, GetMessagesArgs>({
+                query: ({idInstance, apiTokenInstance, receiveTimeout}) => ({
                     method: 'GET',
+                    params: {receiveTimeout},
                     url: `/waInstance${idInstance}/receiveNotification/${apiTokenInstance}`
+                })
+            }),
+            sendMessage: builder.mutation<void, SendMessageArgs>({
+                query: ({message, phoneNumber, apiTokenInstance, idInstance}) => ({
+                    method: 'POST',
+                    body: {chatId: `${phoneNumber}@c.us`, message},
+                    url: `/waInstance${idInstance}/sendMessage/${apiTokenInstance}`
                 })
             })
         }
     }
 })
 
-export const {useGetNotificationsQuery} = notificationsService
+export const {useSendMessageMutation, useGetMessagesQuery, useLazyGetMessagesQuery} = notificationsService

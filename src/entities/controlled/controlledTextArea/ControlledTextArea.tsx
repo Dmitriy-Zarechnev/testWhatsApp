@@ -1,7 +1,6 @@
 import {FieldValues, UseControllerProps, useController} from 'react-hook-form'
 import {TextArea, TextAreaProps} from '@/shared'
 
-
 type Props<T extends FieldValues> = Omit<TextAreaProps, 'onChange' | 'value'> &
     UseControllerProps<T>
 

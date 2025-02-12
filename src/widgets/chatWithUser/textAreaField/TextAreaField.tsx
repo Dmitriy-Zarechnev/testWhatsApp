@@ -1,16 +1,27 @@
 import {KeyboardEvent} from 'react'
 
-import {Button, TextArea} from '@/shared'
+import {Button, LineLoader, TextArea} from '@/shared'
 
 import {ChangeEvent, useState} from 'react'
 import {useResizeTextArea} from './lib/useResizeTextArea'
 
-import s from './TextAreaField.module.scss'
+import {selectApiTokenInstance, selectIdInstance, useLazyGetMessagesQuery, useSendMessageMutation} from '@/services'
+import {useSelector} from 'react-redux'
+import {useParams} from 'react-router-dom'
+import {toast} from 'react-toastify'
 
+import s from './TextAreaField.module.scss'
 
 export const TextAreaField = () => {
     const [messageField, setMessageField] = useState('')
     const {adjustHeight, textAreaRef} = useResizeTextArea(messageField)
+    const {phoneNumber} = useParams()
+
+    const idInstance = useSelector(selectIdInstance)
+    const apiTokenInstance = useSelector(selectApiTokenInstance)
+
+    const [sendMessage, {isLoading: sendMessageIsLoading}] = useSendMessageMutation()
+    const [lazyGetMessages, {isLoading: lazyGetMessagesIsLoading}] = useLazyGetMessagesQuery()
 
 
     const changeMessageHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -19,9 +30,13 @@ export const TextAreaField = () => {
 
     const sendMessageHandler = () => {
         if (messageField.trim()) {
-            // todo: отправим сообщение отсюда
+            sendMessage({message: messageField, idInstance, apiTokenInstance, phoneNumber: String(phoneNumber)}).unwrap().then(() => {
+                    toast.success('Сообщение отправлено!')
+                    lazyGetMessages({apiTokenInstance, idInstance})
 
-            setMessageField('')
+                    setMessageField('')
+                }
+            )
         }
     }
 
@@ -37,7 +52,8 @@ export const TextAreaField = () => {
     }
 
     return (
-        <>{/*{getPublicUserProfileIsLoading && <LineLoader />}*/}
+        <>
+            {(sendMessageIsLoading || lazyGetMessagesIsLoading) && <LineLoader/>}
             <div className={s.wrapper}>
                 <TextArea
                     className={s.textArea}

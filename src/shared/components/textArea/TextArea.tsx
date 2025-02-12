@@ -1,11 +1,11 @@
 import {ComponentPropsWithoutRef, Ref, useId} from 'react'
 
-import clsx from 'clsx'
-
-import s from './TextArea.module.scss'
+import {clsx} from 'clsx'
 
 import {ErrorField} from '../errorField/ErrorField'
 import {Label} from '../label/Label'
+
+import s from './TextArea.module.scss'
 
 export type TextAreaProps = {
     error?: string
