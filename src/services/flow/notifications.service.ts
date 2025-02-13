@@ -28,4 +28,4 @@ const notificationsService = bestTestApi.injectEndpoints({
     }
 })
 
-export const {useSendMessageMutation, useDeleteNotificationMutation, useLazyGetMessagesQuery} = notificationsService
+export const {useSendMessageMutation, useDeleteNotificationMutation, useLazyGetMessagesQuery, useGetMessagesQuery} = notificationsService
