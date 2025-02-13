@@ -1,5 +1,5 @@
 import {bestTestApi} from '../api/bestTestApi'
-import {GetMessagesArgs, MessageResponse, SendMessageArgs} from '@/services'
+import {DeleteNotificationArgs, DeleteNotificationResponse, GetMessagesArgs, MessageResponse, SendMessageArgs} from '@/services'
 
 const notificationsService = bestTestApi.injectEndpoints({
     endpoints: builder => {
@@ -17,9 +17,15 @@ const notificationsService = bestTestApi.injectEndpoints({
                     body: {chatId: `${phoneNumber}@c.us`, message},
                     url: `/waInstance${idInstance}/sendMessage/${apiTokenInstance}`
                 })
+            }),
+            deleteNotification: builder.mutation<DeleteNotificationResponse, DeleteNotificationArgs>({
+                query: ({receiptId, apiTokenInstance, idInstance}) => ({
+                    method: 'DELETE',
+                    url: `/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${receiptId}`
+                })
             })
         }
     }
 })
 
-export const {useSendMessageMutation, useGetMessagesQuery, useLazyGetMessagesQuery} = notificationsService
+export const {useSendMessageMutation, useDeleteNotificationMutation, useLazyGetMessagesQuery} = notificationsService

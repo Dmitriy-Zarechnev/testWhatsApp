@@ -1,27 +1,29 @@
 import {KeyboardEvent} from 'react'
-
 import {Button, LineLoader, TextArea} from '@/shared'
-
 import {ChangeEvent, useState} from 'react'
 import {useResizeTextArea} from './lib/useResizeTextArea'
 
-import {selectApiTokenInstance, selectIdInstance, useLazyGetMessagesQuery, useSendMessageMutation} from '@/services'
+import {addMessage, selectApiTokenInstance, selectIdInstance, useSendMessageMutation} from '@/services'
 import {useSelector} from 'react-redux'
 import {useParams} from 'react-router-dom'
 import {toast} from 'react-toastify'
 
+import {useAppDispatch} from '@/services/store'
+
 import s from './TextAreaField.module.scss'
+
+const MY_PHONE_NUMBER = '79208743215'
 
 export const TextAreaField = () => {
     const [messageField, setMessageField] = useState('')
     const {adjustHeight, textAreaRef} = useResizeTextArea(messageField)
     const {phoneNumber} = useParams()
+    const dispatch = useAppDispatch()
 
     const idInstance = useSelector(selectIdInstance)
     const apiTokenInstance = useSelector(selectApiTokenInstance)
 
     const [sendMessage, {isLoading: sendMessageIsLoading}] = useSendMessageMutation()
-    const [lazyGetMessages, {isLoading: lazyGetMessagesIsLoading}] = useLazyGetMessagesQuery()
 
 
     const changeMessageHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -32,7 +34,8 @@ export const TextAreaField = () => {
         if (messageField.trim()) {
             sendMessage({message: messageField, idInstance, apiTokenInstance, phoneNumber: String(phoneNumber)}).unwrap().then(() => {
                     toast.success('Сообщение отправлено!')
-                    lazyGetMessages({apiTokenInstance, idInstance})
+
+                    dispatch(addMessage({message: messageField, phoneNumber: MY_PHONE_NUMBER, id: String(Math.random())}))
 
                     setMessageField('')
                 }
@@ -53,7 +56,7 @@ export const TextAreaField = () => {
 
     return (
         <>
-            {(sendMessageIsLoading || lazyGetMessagesIsLoading) && <LineLoader/>}
+            {sendMessageIsLoading && <LineLoader/>}
             <div className={s.wrapper}>
                 <TextArea
                     className={s.textArea}

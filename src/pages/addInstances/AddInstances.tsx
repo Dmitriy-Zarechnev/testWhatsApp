@@ -11,7 +11,6 @@ export const AddInstances = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
 
-
     const submitAddInstancesFormHandler = (
         data: AddInstancesFormValues,
         resetForm: () => void

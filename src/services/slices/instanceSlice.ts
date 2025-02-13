@@ -2,10 +2,9 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {InstanceInfo} from '@/services'
 
 const initialState: InstanceInfo = {
-    idInstance: '',
-    apiTokenInstance: ''
+    idInstance: '1103191268',
+    apiTokenInstance: '99c81963e57047fda8366fa5cb499cb37bcef8cd69d34312b6'
 }
-
 
 const slice = createSlice({
     name: 'instanceInfo',

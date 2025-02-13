@@ -9,9 +9,12 @@
   position: relative;
 }
 
-.iconButton {
-  align-self: flex-start;
-  margin-bottom: 10px;
+.buttonsWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .addChatIcon {

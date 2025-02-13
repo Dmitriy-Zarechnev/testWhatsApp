@@ -4,13 +4,16 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 
 import s from './AddInstancesForm.module.scss'
+import {useSelector} from 'react-redux'
+import {selectApiTokenInstance, selectIdInstance} from '@/services'
 
 type Props = {
     onSubmitAddInstancesForm: (data: AddInstancesFormValues, resetForm: () => void) => void
 }
 
 export const AddInstancesForm = ({onSubmitAddInstancesForm}: Props) => {
-
+    const idInstance = useSelector(selectIdInstance)
+    const apiTokenInstance = useSelector(selectApiTokenInstance)
     const {
         control,
         formState: {isSubmitting, errors},
@@ -18,8 +21,8 @@ export const AddInstancesForm = ({onSubmitAddInstancesForm}: Props) => {
         reset
     } = useForm<AddInstancesFormValues>({
         defaultValues: {
-            idInstance: '',
-            apiTokenInstance: ''
+            idInstance: idInstance,
+            apiTokenInstance: apiTokenInstance
         },
         mode: 'onChange',
         resolver: zodResolver(AddInstancesSchema)

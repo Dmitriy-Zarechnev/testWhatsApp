@@ -19,6 +19,10 @@ export type MessageResponse = {
     body: MessageResponseBody
 }
 
+export type DeleteNotificationResponse = {
+    result: boolean
+}
+
 
 export type BaseArgs = {
     idInstance: string
@@ -35,3 +39,36 @@ export type SendMessageArgs = BaseArgs & {
     linkPreview?: boolean
     quotedMessageId?: string
 }
+
+export type DeleteNotificationArgs = BaseArgs & { receiptId: number }
+
+//
+// type InstanceDataResponse = {
+//     idInstance: number,
+//     wid: string,
+//     typeInstance: string
+// }
+//
+// type MessageDataResponse = {
+//     typeMessage: string;
+//     textMessageData: {
+//         textMessage: string;
+//     };
+// }
+//
+// type SenderDataResponse = {
+//     chatId: string;
+//     chatName: string;
+//     sender: string;
+//     senderName: string;
+//     senderContactName: string;
+// }
+//
+// type MessageResponseBody = {
+//     typeWebhook: string,
+//     chatId: string,
+//     instanceData: InstanceDataResponse,
+//     messageData: MessageDataResponse
+//     senderData: SenderDataResponse
+//     timestamp: number;
+// }
