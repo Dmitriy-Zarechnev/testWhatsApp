@@ -12,7 +12,7 @@ import {useParams} from 'react-router-dom'
 
 import s from './ChatField.module.scss'
 
-const MY_PHONE_NUMBER = '79208743215'
+const MY_PHONE_NUMBER = '79998002525' // Ваш номер телефона
 const TIME_OUT = 10
 const POLLING_INTERVAL = 10000
 
